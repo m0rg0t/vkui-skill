@@ -10,12 +10,15 @@
 
 <p align="center">
   <a href="https://github.com/m0rg0t/vkui-skill/actions/workflows/validate.yml"><img src="https://github.com/m0rg0t/vkui-skill/actions/workflows/validate.yml/badge.svg" alt="Validate"></a>
+  <a href="https://m0rg0t.github.io/vkui-skill/"><img src="https://img.shields.io/badge/website-live-2688EB.svg" alt="Bilingual website"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
 </p>
 
 ## English
 
 This skill helps coding agents use [`@vkontakte/vkui`](https://github.com/VKCOM/VKUI) against the version actually installed in a project. It prefers the official VKUI MCP server, falls back to [`llms.txt`](https://vkui.io/llms.txt) and focused official MDX pages, and validates uncertain APIs against public types and exports in `node_modules`.
+
+The bilingual [VKUI Skill website](https://m0rg0t.github.io/vkui-skill/) explains the workflow and includes interactive build, review, and migration examples.
 
 ### What it does
 
@@ -82,6 +85,8 @@ The repository intentionally does not contain a snapshot of VKUI documentation.
 ## Русский
 
 Этот skill помогает агентам проектировать, улучшать, проверять и мигрировать React-интерфейсы с VKUI с учётом версии, установленной в проекте. Он предпочитает официальный VKUI MCP, а без него использует актуальный [`llms.txt`](https://vkui.io/llms.txt), точечные страницы официальной документации и публичные типы из `node_modules`.
+
+Двуязычный [сайт VKUI Skill](https://m0rg0t.github.io/vkui-skill/) объясняет workflow и показывает интерактивные примеры создания, проверки и миграции интерфейса.
 
 ### Возможности
 

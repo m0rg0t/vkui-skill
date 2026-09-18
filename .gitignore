@@ -1,2 +1,4 @@
 .DS_Store
 node_modules/
+site/dist/
+site/public/q-mascot.png

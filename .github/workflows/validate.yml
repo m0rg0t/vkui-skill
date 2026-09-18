@@ -13,12 +13,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install website dependencies
+        run: npm ci --prefix site
+
+      - name: Build website
+        run: npm --prefix site run build -- --logLevel error
 
       - name: Validate repository invariants
         run: node scripts/validate.mjs

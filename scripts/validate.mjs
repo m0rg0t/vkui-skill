@@ -44,6 +44,11 @@ const requiredFiles = [
   join(skillRoot, "references", "official-sources.md"),
   join(skillRoot, "references", "mcp-setup.md"),
   join(skillRoot, "references", "migration.md"),
+  join(repositoryRoot, "site", "package.json"),
+  join(repositoryRoot, "site", "package-lock.json"),
+  join(repositoryRoot, "site", "src", "App.jsx"),
+  join(repositoryRoot, "site", "public", "favicon.svg"),
+  join(repositoryRoot, ".github", "workflows", "pages.yml"),
 ];
 
 for (const file of requiredFiles) {
