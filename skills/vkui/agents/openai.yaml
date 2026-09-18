@@ -1,0 +1,7 @@
+interface:
+  display_name: "VKUI"
+  short_description: "Build and migrate interfaces with current VKUI guidance"
+  icon_small: "./assets/q-mascot.png"
+  icon_large: "./assets/q-mascot.png"
+  brand_color: "#2688EB"
+  default_prompt: "Use $vkui to improve this interface with version-matched official VKUI guidance."
