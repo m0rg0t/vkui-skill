@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { AppRoot, ConfigProvider } from "@vkontakte/vkui";
+import { copyText, getInitialLanguage, persistLanguage } from "./browser-platform.mjs";
 import {
   ClientsSection,
   DataFlowSection,
@@ -32,7 +33,7 @@ const copy = {
     copy: "Copy install command",
     copied: "Copied",
     github: "View on GitHub",
-    builtWith: "This page runs on VKUI 8.4.0",
+    builtWith: "This page runs on VKUI 8.4.1",
     workflowEyebrow: "One disciplined loop",
     workflowTitle: "From project version to verified interface",
     workflowIntro:
@@ -169,7 +170,7 @@ const copy = {
     copy: "Скопировать команду",
     copied: "Скопировано",
     github: "Открыть на GitHub",
-    builtWith: "Эта страница работает на VKUI 8.4.0",
+    builtWith: "Эта страница работает на VKUI 8.4.1",
     workflowEyebrow: "Один дисциплинированный цикл",
     workflowTitle: "От версии проекта до проверенного интерфейса",
     workflowIntro:
@@ -291,16 +292,8 @@ const copy = {
   },
 };
 
-function getInitialLanguage() {
-  const fromQuery = new URLSearchParams(window.location.search).get("lang");
-  if (fromQuery === "ru" || fromQuery === "en") return fromQuery;
-  const saved = window.localStorage.getItem("vkui-skill-language");
-  if (saved === "ru" || saved === "en") return saved;
-  return window.navigator.language.toLowerCase().startsWith("ru") ? "ru" : "en";
-}
-
 export function App() {
-  const [language, setLanguage] = useState(getInitialLanguage);
+  const [language, setLanguage] = useState(() => getInitialLanguage(window));
   const [copied, setCopied] = useState(false);
   const [selectedExample, setSelectedExample] = useState("build");
   const content = copy[language];
@@ -313,7 +306,7 @@ export function App() {
     document
       .querySelector('meta[name="description"]')
       ?.setAttribute("content", content.metaDescription);
-    window.localStorage.setItem("vkui-skill-language", language);
+    persistLanguage(window, language);
     const url = new URL(window.location.href);
     url.searchParams.set("lang", language);
     window.history.replaceState({}, "", url);
@@ -326,23 +319,7 @@ export function App() {
   }, [copied]);
 
   async function copyInstallCommand() {
-    let didCopy = false;
-
-    try {
-      await window.navigator.clipboard.writeText(INSTALL_COMMAND);
-      didCopy = true;
-    } catch {
-      const textArea = document.createElement("textarea");
-      textArea.value = INSTALL_COMMAND;
-      textArea.setAttribute("readonly", "");
-      textArea.style.position = "fixed";
-      textArea.style.opacity = "0";
-      document.body.append(textArea);
-      textArea.select();
-      didCopy = document.execCommand("copy");
-      textArea.remove();
-    }
-
+    const didCopy = await copyText(window, document, INSTALL_COMMAND);
     if (didCopy) setCopied(true);
   }
 

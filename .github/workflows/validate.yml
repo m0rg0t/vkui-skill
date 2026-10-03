@@ -11,22 +11,30 @@ permissions:
 jobs:
   skill:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Check out repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@v7.0.1
 
       - name: Set up Node.js
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@v7.0.0
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
           cache-dependency-path: site/package-lock.json
 
       - name: Install website dependencies
         run: npm ci --prefix site
 
-      - name: Build website
-        run: npm --prefix site run build -- --logLevel error
+      - name: Check and build website
+        run: npm --prefix site run check
+
+      - name: Install browser for local preview tests
+        run: npx playwright install --with-deps chromium
+        working-directory: site
+
+      - name: Test the production preview
+        run: npm --prefix site run test:browser
 
       - name: Validate repository invariants
         run: node scripts/validate.mjs
