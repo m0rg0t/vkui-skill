@@ -21,6 +21,10 @@ pixels, RU/EN switching/reload, example tabs and copying, plus unavailable
 storage and both clipboard paths. These tests copy synthetic/installation text;
 they never execute the command or install a skill.
 
+Production browser checks also caught that VKUI Title renders a span by default.
+All title levels now have explicit h1/h2/h3 elements, retaining existing visual
+styles while providing real heading navigation.
+
 Denied localStorage access previously prevented startup and language changes.
 An exception from legacy clipboard copying also escaped its fallback and left
 a hidden textarea behind. Both paths now remain usable without unhandled errors.

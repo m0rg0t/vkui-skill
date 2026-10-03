@@ -10,6 +10,8 @@ for (const width of [320, 390, 1280]) {
     });
     await page.goto('./?lang=en');
     await expect(page.getByRole('heading', { name: 'Current VKUI, matched to your project.' })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 2, name: 'From project version to verified interface' })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 3, name: 'Resolve', exact: true })).toBeVisible();
     await page.getByText('RU', { exact: true }).click();
     await expect(page.locator('html')).toHaveAttribute('lang', 'ru');
     await expect(page).toHaveURL(/lang=ru/);
