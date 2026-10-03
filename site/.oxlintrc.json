@@ -1,0 +1,6 @@
+{
+  "plugins": ["react", "unicorn", "oxc"],
+  "categories": { "correctness": "error" },
+  "env": { "browser": true, "node": true },
+  "ignorePatterns": ["node_modules", "dist", "test-results", "playwright-report"]
+}

@@ -76,7 +76,7 @@ export function HeroSection({ content, mascotUrl, copied, onCopy }) {
     <section className="hero" id="top">
       <div className="hero-copy">
         <Text className="eyebrow">{content.eyebrow}</Text>
-        <Title level="1" className="hero-title">
+        <Title Component="h1" level="1" className="hero-title">
           {content.title}
         </Title>
         <Paragraph className="hero-intro">{content.intro}</Paragraph>
@@ -113,7 +113,7 @@ export function WorkflowSection({ content }) {
     <section className="workflow section" id="how" aria-labelledby="workflow-title">
       <div className="section-heading">
         <Text className="eyebrow">{content.workflowEyebrow}</Text>
-        <Title level="2" id="workflow-title" className="section-title">
+        <Title Component="h2" level="2" id="workflow-title" className="section-title">
           {content.workflowTitle}
         </Title>
         <Paragraph className="section-intro">{content.workflowIntro}</Paragraph>
@@ -123,7 +123,7 @@ export function WorkflowSection({ content }) {
         {content.steps.map(([number, title, description]) => (
           <Card Component="div" key={number} className="workflow-card" mode="shadow">
             <div className="workflow-number">{number}</div>
-            <Title level="3">{title}</Title>
+            <Title Component="h3" level="3">{title}</Title>
             <Paragraph>{description}</Paragraph>
           </Card>
         ))}
@@ -142,7 +142,7 @@ export function ExamplesSection({
     <section className="examples section" id="examples" aria-labelledby="examples-title">
       <div className="section-heading section-heading--wide">
         <Text className="eyebrow">{content.examplesEyebrow}</Text>
-        <Title level="2" id="examples-title" className="section-title">
+        <Title Component="h2" level="2" id="examples-title" className="section-title">
           {content.examplesTitle}
         </Title>
         <Paragraph className="section-intro">{content.examplesIntro}</Paragraph>
@@ -208,7 +208,7 @@ export function DataFlowSection({ content }) {
     <section className="data-flow section" aria-labelledby="data-title">
       <div className="section-heading">
         <Text className="eyebrow">{content.dataEyebrow}</Text>
-        <Title level="2" id="data-title" className="section-title">
+        <Title Component="h2" level="2" id="data-title" className="section-title">
           {content.dataTitle}
         </Title>
         <Paragraph className="section-intro">{content.dataIntro}</Paragraph>
@@ -217,7 +217,7 @@ export function DataFlowSection({ content }) {
       <div className="data-grid">
         <Card Component="div" className="data-card data-card--mcp" mode="shadow">
           <div className="data-card-head">
-            <Title level="3">{content.mcpTitle}</Title>
+            <Title Component="h3" level="3">{content.mcpTitle}</Title>
             <Text>{content.mcpBadge}</Text>
           </div>
           <CheckList items={content.mcpSteps} />
@@ -231,7 +231,7 @@ export function DataFlowSection({ content }) {
 
         <Card Component="div" className="data-card data-card--fallback" mode="shadow">
           <div className="data-card-head">
-            <Title level="3">{content.fallbackTitle}</Title>
+            <Title Component="h3" level="3">{content.fallbackTitle}</Title>
             <Text>{content.fallbackBadge}</Text>
           </div>
           <CheckList items={content.fallbackSteps} />
@@ -246,7 +246,7 @@ export function SourcesSection({ content }) {
     <section className="sources section" id="sources" aria-labelledby="sources-title">
       <div className="section-heading">
         <Text className="eyebrow">{content.sourcesEyebrow}</Text>
-        <Title level="2" id="sources-title" className="section-title">
+        <Title Component="h2" level="2" id="sources-title" className="section-title">
           {content.sourcesTitle}
         </Title>
         <Paragraph className="section-intro">{content.sourcesIntro}</Paragraph>
@@ -256,7 +256,7 @@ export function SourcesSection({ content }) {
         {content.sources.map(([number, title, description]) => (
           <div className="source-row" key={number}>
             <span>{number}</span>
-            <Title level="3">{title}</Title>
+            <Title Component="h3" level="3">{title}</Title>
             <Paragraph>{description}</Paragraph>
           </div>
         ))}
@@ -270,7 +270,7 @@ export function ClientsSection({ content }) {
     <section className="clients section" aria-labelledby="clients-title">
       <div className="clients-copy">
         <Text className="eyebrow">{content.clientsEyebrow}</Text>
-        <Title level="2" id="clients-title" className="section-title">
+        <Title Component="h2" level="2" id="clients-title" className="section-title">
           {content.clientsTitle}
         </Title>
         <Paragraph className="section-intro">{content.clientsIntro}</Paragraph>
@@ -304,7 +304,7 @@ export function PrinciplesSection({ content }) {
     <section className="principles section" aria-labelledby="principles-title">
       <div className="section-heading">
         <Text className="eyebrow">{content.principlesEyebrow}</Text>
-        <Title level="2" id="principles-title" className="section-title">
+        <Title Component="h2" level="2" id="principles-title" className="section-title">
           {content.principlesTitle}
         </Title>
       </div>
@@ -314,7 +314,7 @@ export function PrinciplesSection({ content }) {
           <div className="principle" key={title}>
             <span aria-hidden="true">↳</span>
             <div>
-              <Title level="3">{title}</Title>
+              <Title Component="h3" level="3">{title}</Title>
               <Paragraph>{description}</Paragraph>
             </div>
           </div>
@@ -332,7 +332,7 @@ export function FinalCtaSection({ content, mascotUrl, copied, onCopy }) {
       </div>
       <div className="cta-copy">
         <Text className="eyebrow">{content.ctaEyebrow}</Text>
-        <Title level="2" id="cta-title" className="section-title">
+        <Title Component="h2" level="2" id="cta-title" className="section-title">
           {content.ctaTitle}
         </Title>
         <Paragraph className="section-intro">{content.ctaText}</Paragraph>
